@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="js/mdb.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main-login.js"></script>
+    <!-- <script src="js/main.js"></script> -->
 </head>
 <body>
     <header id='main-header'>
@@ -55,20 +56,20 @@
     <article id='main-content'>
         <section id='main-seccion-registro' class="border rounded">
             <header id="main-label-registro">
-                    <h2>Registrarse</h2>
+                    <h2>Iniciar</h2>
             </header>
-            <form method="POST" name="form-registro" id="form-register" action="#">
+            <form method="POST" name="form-registro" id="form-login" action="#">
                 <div id="div-email" class="form-group">
-                    <label for="exampleInputEmail1">Correo Electronico</label>
-                    <input type="text" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Ingresar Correo Electronico">
-                  <span id="emailHelp" class=""></span> 
+                    <label for="usuario">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="usuario" aria-describedby="usuariolHelp" placeholder="Ingresar Usuario">
+                  <span id="usuariolHelp" class=""></span> 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
                     <input type="password" class="form-control" id="InputPassword" placeholder="Contraseña">
                     <span id="passHelp" class=""></span> 
                 </div>
-                <button type="submit" class="btn btn-primary" id="btn-guardar">Guardar</button>
+                <button type="submit" class="btn btn-primary" id="btn-login">Iniciar</button>
                 <div id='log'>
 
                 </div>

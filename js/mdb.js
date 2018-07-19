@@ -1,6 +1,11 @@
 function guardar(datos){
-
-    localStorage.setItem('d'+datosUsuario.email,datos);
+        let datosString= JSON.stringify(datos);
+        console.log(datos);
+        localStorage.setItem('info-'.datos.usuario,datosString);
     return true;
+}
+
+function getUsuario(usuario){
+   return localStorage.getItem(usuario);
 }
 

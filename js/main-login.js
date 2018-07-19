@@ -1,11 +1,11 @@
 window.addEventListener('load',function(){
     
-    let form = document.querySelector('#form-login');
+    let frmlogin = document.querySelector('#form-login');
 
-    form.addEventListener('submit',function(event){
+    frmlogin.addEventListener('submit',function(event){
      event.preventDefault(); 
         guadarDatosUsuario(
-            (email,pass)=>{
+            (usuario,pass)=>{
                 alert('Datos guardados correctamente');
                 window.location.replace('index.html');
             }
@@ -13,35 +13,29 @@ window.addEventListener('load',function(){
     });
     const guadarDatosUsuario = (callback)=>{
 
-        let email = document.querySelector('#Email');
+        let usuario = document.querySelector('#usuario');
         let pass = document.querySelector('#InputPassword');
-        let emailHelp = document.querySelector('#emailHelp');
+        let usuariolHelp = document.querySelector('#usuariolHelp');
         let passHelp = document.querySelector('#passHelp');
 
-         if(!validate(email.value)){
-             emailHelp.innerHTML='El campo correo electronico esta vacio o no es valido';
-             emailHelp.style.color='red';
+         if(!validate(usuario.value)){
+             usuariolHelp.innerHTML='El campo Usuario esta vacio o no es valido';
+             usuariolHelp.style.color='red';
              return true;
-         }else{
-             emailHelp.innerHTML='';
-             emailHelp.style.color='';
          }
          if(!validate(pass.value)){
              passHelp.innerHTML='El campo password esta vacio o no es valido';
              passHelp.style.color='red';
              return true;
-         }else {
-             passHelp.innerHTML='';
-             passHelp.style.color='';
          }
          
         let datos = {
-            email: email.value,
+            usuario : usuario.value,
             pass : pass.value
         };
          guardar(datos);
 
-        return callback(email,pass);
+        return callback(usuario,pass);
     }
 
 });
