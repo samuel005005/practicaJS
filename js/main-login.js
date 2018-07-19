@@ -4,38 +4,58 @@ window.addEventListener('load',function(){
 
     frmlogin.addEventListener('submit',function(event){
      event.preventDefault(); 
-        guadarDatosUsuario(
-            (usuario,pass)=>{
-                alert('Datos guardados correctamente');
-                window.location.replace('index.html');
+     login(
+            ()=>{
+               // alert('Datos guardados correctamente');
+               window.location.replace('index.html');
             }
         );
     });
-    const guadarDatosUsuario = (callback)=>{
+    const login = (callback)=>{
 
-        let usuario = document.querySelector('#usuario');
-        let pass = document.querySelector('#InputPassword');
-        let usuariolHelp = document.querySelector('#usuariolHelp');
-        let passHelp = document.querySelector('#passHelp');
+            let usuario = document.querySelector('#usuario');
+            
+            let usuariolHelp = document.querySelector('#usuariolHelp');
+            if(!validate(usuario.value)){
+                usuariolHelp.innerHTML='El campo Usuario esta vacio';
+                usuariolHelp.style.color='red';
+                return true;
+            }else{
+                usuariolHelp.innerHTML='';
+                usuariolHelp.style.color='';
+            }
 
-         if(!validate(usuario.value)){
-             usuariolHelp.innerHTML='El campo Usuario esta vacio o no es valido';
-             usuariolHelp.style.color='red';
-             return true;
-         }
+         let pass = document.querySelector('#InputPassword');
+         let passHelp = document.querySelector('#passHelp');
+
          if(!validate(pass.value)){
              passHelp.innerHTML='El campo password esta vacio o no es valido';
              passHelp.style.color='red';
              return true;
          }
          
-        let datos = {
-            usuario : usuario.value,
-            pass : pass.value
-        };
-         guardar(datos);
+        let guadarDatosUsuario= getUsuario(usuario.value);
+        let validation_login=  document.querySelector('#validation-login');  
 
-        return callback(usuario,pass);
+            if(guadarDatosUsuario ==null){
+                usuariolHelp.innerHTML='Usuario incorrecto';
+                usuariolHelp.style.color='red';
+                return true;
+            }else{
+                usuariolHelp.innerHTML='';
+                usuariolHelp.style.color='';
+            }
+            
+            if(pass.value !=JSON.parse(guadarDatosUsuario).pass){
+                passHelp.innerHTML='Usuario incorrecto';
+                passHelp.style.color='red';
+                return true;
+            }
+        return callback();
     }
+
+
+
+
 
 });
